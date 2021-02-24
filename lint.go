@@ -25,14 +25,15 @@ func main() {
 		}
 		for _, filename := range files {
 			fmt.Printf("Checking %s ... ", filename)
-			file, err := ioutil.ReadFile(filename)
-			if err != nil {
-				colorstring.Printf("[red]Error reading file: %s\n", err)
-				break
-			}
+			//file, err := ioutil.ReadFile(filename)
+			//if err != nil {
+			//	colorstring.Printf("[red]Error reading file: %s\n", err)
+			//	break
+			//}
 //			#_, err = hclparse.NewParser(string(file))
                         parser := hclparse.NewParser()
-			_, err = parser.ParseHCL(string(file))
+			//_, err = parser.ParseHCL(string(file))
+			_, err = parser.ParseHCL(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
 				break
