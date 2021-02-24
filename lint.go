@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	//"github.com/hashicorp/hcl/hclparse"
-	"github.com/hashicorp/hcl"
+	"github.com/hashicorp/hcl/hclparse"
+//	"github.com/hashicorp/hcl"
 	"github.com/mitchellh/colorstring"
 )
 
@@ -33,8 +33,7 @@ func main() {
 			//}
 //			#_, err = hclparse.NewParser(string(file))
                         //parser := hclparse.NewParser()
-			//_, err = parser.ParseHCL(string(file))
-			_, err = hcl.Decode(filename)
+			_, err = parser.ParseHCLFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
 				break
