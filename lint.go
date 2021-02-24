@@ -32,7 +32,7 @@ func main() {
 			//	break
 			//}
 //			#_, err = hclparse.NewParser(string(file))
-                        //parser := hclparse.NewParser()
+                        parser := hclparse.NewParser()
 			_, err = parser.ParseHCLFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
