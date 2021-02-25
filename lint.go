@@ -6,10 +6,28 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hashicorp/hcl/hclparse"
-//	"github.com/hashicorp/hcl"
+	"log"
+	"github.com/hashicorp/hcl/v2/hclsimple"
 	"github.com/mitchellh/colorstring"
 )
+
+
+type Config struct {
+	IOMode  string        `hcl:"io_mode"`
+	Service ServiceConfig `hcl:"service,block"`
+}
+
+type ServiceConfig struct {
+	Protocol   string          `hcl:"protocol,label"`
+	Type       string          `hcl:"type,label"`
+	ListenAddr string          `hcl:"listen_addr"`
+	Processes  []ProcessConfig `hcl:"process,block"`
+}
+
+type ProcessConfig struct {
+	Type    string   `hcl:"type,label"`
+	Command []string `hcl:"command"`
+}
 
 func main() {
 	for i, arg := range os.Args {
@@ -32,8 +50,8 @@ func main() {
 			//	break
 			//}
 //			#_, err = hclparse.NewParser(string(file))
-                        parser := hclparse.NewParser()
-			_, err = parser.ParseHCLFile(filename)
+                        var config Config
+			err := hclsimple.DecodeFile(filename, nil, &config)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
 				break
