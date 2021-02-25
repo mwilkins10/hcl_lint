@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"log"
+//	"log"
 	"github.com/hashicorp/hcl/hclsimple"
 	"github.com/mitchellh/colorstring"
 )
