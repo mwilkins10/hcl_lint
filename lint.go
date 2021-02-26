@@ -41,8 +41,6 @@ func main() {
                             78,             // wrapping width
                             true,           // generate colored/highlighted output
                         )
-			message := wr.WriteDiagnostics(diags)
-			//if diags != nil {
 			if diags.HasErrors() {
 			        fmt.Printf("\n")
 			        wr.WriteDiagnostics(diags)
