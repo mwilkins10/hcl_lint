@@ -33,12 +33,19 @@ func main() {
 				break
 			}
 			parser := hclparse.NewParser()
-			_, err = parser.ParseHCLFile(filename)
-			if err != nil {
-				colorstring.Printf("[red]Error parsing file: %s\n", err)
-				break
-			}
-			colorstring.Printf("[green]OK!\n")
+			_, diags = parser.ParseHCLFile(filename)
+                        wr := hcl.NewDiagnosticTextWriter(
+                            os.Stdout,      // writer to send messages to
+                            parser.Files(), // the parser's file cache, for source snippets
+                            78,             // wrapping width
+                            true,           // generate colored/highlighted output
+                        )
+                        wr.WriteDiagnostics(diags)
+		//	if err != nil {
+		//		colorstring.Printf("[red]Error parsing file: %s\n", err)
+		//		break
+		//	}
+		//	colorstring.Printf("[green]OK!\n")
 		}
 	}
 
