@@ -26,7 +26,7 @@ func main() {
 			colorstring.Printf("[red]Error finding files: %s", err)
 		}
 		for _, filename := range files {
-			fmt.Printf("Checking %s ... \n", filename)
+			fmt.Printf("Checking %s ... ", filename)
 			file, err := ioutil.ReadFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error reading file: %s\n", err)
@@ -44,7 +44,8 @@ func main() {
 			message := wr.WriteDiagnostics(diags)
 			//if diags != nil {
 			if diags.HasErrors() {
-				colorstring.Printf("[red]Error parsing file:\n %s\n", message)
+			        fmt.Printf("\n")
+			        wr.WriteDiagnostics(diags)
 				break
 			}
 			colorstring.Printf("[green]OK!\n")
