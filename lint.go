@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"github.com/hashicorp/hcl/v2/hclsimple"
+	"github.com/hashicorp/hcl/hclsimple"
 )
 
 type Config struct {
