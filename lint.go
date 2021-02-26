@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-//	"io/ioutil"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 
 //	"log"
-	"github.com/hashicorp/hcl/hclsimple"
+	"github.com/hashicorp/hcl/v2/hclsimple"
 	"github.com/mitchellh/colorstring"
 )
 
@@ -44,11 +44,11 @@ func main() {
 		}
 		for _, filename := range files {
 			fmt.Printf("Checking %s ... ", filename)
-			//file, err := ioutil.ReadFile(filename)
-			//if err != nil {
-			//	colorstring.Printf("[red]Error reading file: %s\n", err)
-			//	break
-			//}
+			file, err := ioutil.ReadFile(filename)
+			if err != nil {
+				colorstring.Printf("[red]Error reading file: %s\n", err)
+				break
+			}
 //			#_, err = hclparse.NewParser(string(file))
                         var config Config
 			err := hclsimple.DecodeFile(filename, nil, &config)
