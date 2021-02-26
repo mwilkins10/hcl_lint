@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
         "github.com/hashicorp/hcl/hclparse"
         "github.com/hashicorp/hcl"
@@ -26,7 +27,7 @@ func main() {
 			colorstring.Printf("[red]Error finding files: %s", err)
 		}
 		for _, filename := range files {
-			fmt.Printf("Checking %s ... ", filename)
+			fmt.Printf("Checking %s ... \n", filename)
 			file, err := ioutil.ReadFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error reading file: %s\n", err)
@@ -41,9 +42,9 @@ func main() {
                             78,             // wrapping width
                             true,           // generate colored/highlighted output
                         )
-			//err = diags
 			message := wr.WriteDiagnostics(diags)
-			if diags != nil {
+			//if diags != nil {
+			if strings.ContainsAny(diags, "Error")
 				colorstring.Printf("[red]Error parsing file:\n %s\n", message)
 				break
 			}
