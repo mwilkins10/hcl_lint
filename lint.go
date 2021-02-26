@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
         "github.com/hashicorp/hcl/hclparse"
+        "github.com/hashicorp/hcl"
 	"github.com/mitchellh/colorstring"
 )
 
@@ -33,7 +34,7 @@ func main() {
 				break
 			}
 			parser := hclparse.NewParser()
-			_, diags = parser.ParseHCLFile(filename)
+			_, diags := parser.ParseHCLFile(filename)
                         wr := hcl.NewDiagnosticTextWriter(
                             os.Stdout,      // writer to send messages to
                             parser.Files(), // the parser's file cache, for source snippets
