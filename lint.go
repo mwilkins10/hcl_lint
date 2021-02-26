@@ -47,6 +47,7 @@ func main() {
 			file, err := ioutil.ReadFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error reading file: %s\n", err)
+			        colorstring.Printf("[red]File Content: %s", file)
 				break
 			}
 //			#_, err = hclparse.NewParser(string(file))
