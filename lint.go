@@ -6,28 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-//	"log"
-        "github.com/hashicorp/hcl/hclsimple"
+        "github.com/hashicorp/hcl/hclparse"
 	"github.com/mitchellh/colorstring"
 )
 
-
-type Config struct {
-	IOMode  string        `hcl:"terraform`
-//	Service ServiceConfig `hcl:"service,block"`
-}
-
-//type ServiceConfig struct {
-//	Protocol   string          `hcl:"protocol,label"`
-//	Type       string          `hcl:"type,label"`
-//	ListenAddr string          `hcl:"listen_addr"`
-//	Processes  []ProcessConfig `hcl:"process,block"`
-//}
-
-//type ProcessConfig struct {
-//	Type    string   `hcl:"type,label"`
-//	Command []string `hcl:"command"`
-//}
 
 func main() {
 	for i, arg := range os.Args {
@@ -51,8 +33,7 @@ func main() {
 				break
 			}
 //			#_, err = hclparse.NewParser(string(file))
-                        var config Config
-			err = hclsimple.DecodeFile(filename, nil, &config)
+			err = hclparse.ParseHCLFile(filename)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
 				break
