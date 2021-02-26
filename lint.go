@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 
 //	"log"
-	hcl2 "github.com/hashicorp/hcl/v2"
+        "github.com/hashicorp/hcl/v2/hclsimple"
 	"github.com/mitchellh/colorstring"
 )
 
