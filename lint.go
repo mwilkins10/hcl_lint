@@ -50,8 +50,8 @@ func main() {
 				break
 			}
 //			#_, err = hclparse.NewParser(string(file))
-                        var config Config
-			_, err := hclsimple.DecodeFile(filename, nil, &config)
+                        //var config Config
+			err := hclsimple.DecodeFile(filename, nil)
 			if err != nil {
 				colorstring.Printf("[red]Error parsing file: %s\n", err)
 				break
