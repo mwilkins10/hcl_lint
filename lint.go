@@ -13,7 +13,7 @@ import (
 
 
 type Config struct {
-	IOMode  string        `hcl:"source"`
+	IOMode  string        `hcl:"terraform`
 //	Service ServiceConfig `hcl:"service,block"`
 }
 
