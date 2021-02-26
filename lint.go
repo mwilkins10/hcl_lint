@@ -44,7 +44,7 @@ func main() {
                         )
 			message := wr.WriteDiagnostics(diags)
 			//if diags != nil {
-			if strings.ContainsAny(string(diags), "Error") {
+			if diags.HasErrors() {
 				colorstring.Printf("[red]Error parsing file:\n %s\n", message)
 				break
 			}
