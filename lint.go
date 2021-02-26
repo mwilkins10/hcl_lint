@@ -49,5 +49,4 @@ func main() {
 			colorstring.Printf("[green]OK!\n")
 		}
 	}
-
 }
