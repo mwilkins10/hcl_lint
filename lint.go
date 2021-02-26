@@ -12,10 +12,10 @@ import (
 )
 
 
-//type Config struct {
-//	IOMode  string        `hcl:"io_mode"`
+type Config struct {
+	IOMode  string        `hcl:"source"`
 //	Service ServiceConfig `hcl:"service,block"`
-//}
+}
 
 //type ServiceConfig struct {
 //	Protocol   string          `hcl:"protocol,label"`
