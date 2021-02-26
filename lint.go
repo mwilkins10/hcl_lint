@@ -41,9 +41,9 @@ func main() {
                             78,             // wrapping width
                             true,           // generate colored/highlighted output
                         )
-			err = diags
-                        message = wr.WriteDiagnostics(diags)
-			if err != nil {
+			//err = diags
+			message := wr.WriteDiagnostics(diags)
+			if diags != nil {
 				colorstring.Printf("[red]Error parsing file:\n %s\n", message)
 				break
 			}
